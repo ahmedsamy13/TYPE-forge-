@@ -94,23 +94,23 @@ export default function App() {
   const code = result.data?.code ?? "";
   return (
     <div className="mx-auto max-w-[1240px] px-5 sm:px-8 lg:px-12">
-      <header className="flex h-20 items-center justify-between border-b border-[#e1e6dc] sm:h-24">
+      <header className="flex h-20 items-center justify-between border-b border-line sm:h-24">
         <a
           href="#"
           aria-label="SMSM Type Forge home"
           className="flex items-center gap-2.5"
         >
-          <span className="grid size-9 place-items-center rounded-[10px] bg-[#2b513c] text-white">
+          <span className="grid size-9 place-items-center rounded-[10px] bg-primary text-on-primary">
             <Braces size={21} />
           </span>
           <span className="text-xl font-semibold tracking-[-.7px] sm:text-2xl">
             smsm <span className="font-normal">type forge</span>
-            <span className="text-[#72916c]">.</span>
+            <span className="text-accent">.</span>
           </span>
         </a>
         <div className="flex items-center gap-7">
-          <span className="hidden items-center gap-2 text-xs text-[#7e8a74] md:flex">
-            <span className="size-1.5 rounded-full bg-[#72916c]" />
+          <span className="hidden items-center gap-2 text-xs text-muted md:flex">
+            <span className="size-1.5 rounded-full bg-success" />
             100% local & private
           </span>
           <a
@@ -128,21 +128,21 @@ export default function App() {
       </header>
       <main>
         <section className="relative py-9 sm:py-12 lg:py-14">
-          <div className="mb-5 flex items-center gap-2 text-[9px] font-semibold tracking-[1.6px] text-[#78876e]">
-            <span className="size-1.5 rounded-full bg-[#78956d]" />
-            LESS TYPING. MORE BUILDING.
+          <div className="mb-5 flex items-center gap-2 text-[11px] font-semibold tracking-[1.6px] text-accent">
+            <span className="size-1.5 rounded-full bg-panel" />
+            JSON / TYPESCRIPT CONVERTER
           </div>
           <h1 className="text-[42px] leading-[1.08] font-semibold tracking-[-2px] sm:text-[56px]">
             From JSON.
             <br />
-            <span className="text-[#7e9478]">To well-typed code.</span>
+            <span className="text-accent">To well-typed code.</span>
           </h1>
-          <p className="mt-5 max-w-lg text-sm leading-7 text-[#7d8874]">
+          <p className="mt-5 max-w-lg text-sm leading-7 text-muted">
             Turn your API responses into TypeScript interfaces and types.
             <br className="hidden sm:block" /> A little less boilerplate. A
             little more flow.
           </p>
-          <div className="mt-5 flex flex-wrap items-center gap-x-5 gap-y-2 text-[10px] text-[#718468]">
+          <div className="mt-5 flex flex-wrap items-center gap-x-5 gap-y-2 text-[11px] text-muted">
             <span className="flex items-center gap-1.5">
               <WandSparkles size={14} />
               Instant conversion
@@ -152,17 +152,14 @@ export default function App() {
               Your data stays in your browser
             </span>
           </div>
-          <div
-            aria-hidden="true"
-            className="absolute top-20 right-10 hidden size-36 -rotate-12 items-center justify-center rounded-[34px] border border-[#dde5d6] bg-[#edf2e8] text-[#749168] shadow-[10px_10px_0_#eff2eb] lg:flex"
-          >
+          <div aria-hidden="true" className="technical-emblem">
             <Braces size={63} strokeWidth={1.3} />
-            <span className="absolute -top-6 -right-6 text-5xl">✳</span>
+            <span>JSON → TS</span>
           </div>
         </section>
         <section
           aria-label="Conversion settings"
-          className="mb-5 flex flex-wrap items-end gap-5 rounded-xl border border-[#dfe5d8] bg-white p-5"
+          className="mb-5 flex flex-wrap items-end gap-5 rounded-xl border border-line bg-surface p-5"
         >
           <div className="min-w-0 flex-1 sm:max-w-[215px]">
             <label htmlFor="root-name" className="field-label">
@@ -180,13 +177,13 @@ export default function App() {
           </div>
           <div>
             <span className="field-label">Declaration style</span>
-            <div className="flex rounded-lg border border-[#dde4d5] bg-[#f2f5ee] p-1">
+            <div className="flex rounded-lg border border-line bg-recessed p-1">
               {(["interface", "type"] as const).map((style) => (
                 <button
                   key={style}
                   aria-pressed={options.style === style}
                   onClick={() => update("style", style)}
-                  className={`rounded-md px-5 py-1.5 font-mono text-xs transition ${options.style === style ? "bg-white text-[#3e6238] shadow-sm" : "text-[#929c86]"}`}
+                  className={`rounded-md px-5 py-1.5 font-mono text-xs transition ${options.style === style ? "bg-selected text-accent shadow-[inset_0_0_0_1px_#9acbff60]" : "text-muted"}`}
                 >
                   {style}
                 </button>
@@ -213,7 +210,7 @@ export default function App() {
         </section>
         <section
           aria-label="JSON to TypeScript converter"
-          className="grid overflow-hidden rounded-2xl border border-[#dfe5d8] bg-white shadow-[0_8px_25px_#25352b04] lg:grid-cols-2"
+          className="grid overflow-hidden rounded-2xl border border-line bg-surface shadow-[0_12px_32px_#00000020] lg:grid-cols-2"
         >
           <div className="min-w-0">
             <div className="editor-heading">
@@ -228,7 +225,7 @@ export default function App() {
                     setOptions(initial);
                     notify("Example loaded.");
                   }}
-                  className="flex items-center gap-1.5 text-[10px] text-[#7b8e6c]"
+                  className="flex items-center gap-1.5 text-[11px] text-muted"
                   title="Load example JSON"
                 >
                   <RotateCcw size={12} />
@@ -241,7 +238,7 @@ export default function App() {
                   }}
                   aria-label="Clear JSON input"
                   title="Clear input"
-                  className="text-[#95a18a]"
+                  className="text-muted"
                 >
                   <Trash2 size={14} />
                 </button>
@@ -268,21 +265,21 @@ export default function App() {
               <button
                 onClick={format}
                 disabled={!input.trim()}
-                className="flex items-center gap-1.5 text-[#637b56]"
+                className="flex items-center gap-1.5 text-muted"
               >
                 <WandSparkles size={12} />
                 Format JSON
               </button>
             </div>
           </div>
-          <div className="min-w-0 border-t border-[#e1e6dc] bg-[#f9fbf6] lg:border-t-0 lg:border-l">
+          <div className="min-w-0 border-t border-line bg-recessed lg:border-t-0 lg:border-l">
             <div className="editor-heading">
               <div className="flex items-center gap-2.5">
                 <span className="step">02</span>
                 <h2 className="text-sm font-semibold">Your TypeScript</h2>
               </div>
               <span
-                className={`flex items-center gap-1.5 rounded-md px-2 py-1 text-[9px] ${result.data && !busy ? "bg-[#edf3e6] text-[#698660]" : "bg-[#f0f1eb] text-[#929c87]"}`}
+                className={`flex items-center gap-1.5 rounded-md px-2 py-1 text-[11px] ${result.data && !busy ? "bg-success-bg text-success" : "bg-panel text-muted"}`}
               >
                 <span className="size-1 rounded-full bg-current" />
                 {busy
@@ -314,7 +311,7 @@ export default function App() {
                 </pre>
               ) : (
                 <div className="flex min-h-[360px] flex-col items-center justify-center px-6 text-center">
-                  <span className="mb-4 grid size-12 place-items-center rounded-xl bg-[#edf1e6] text-[#89a178]">
+                  <span className="mb-4 grid size-12 place-items-center rounded-xl bg-panel text-accent">
                     <Code2 size={25} />
                   </span>
                   <h3 className="text-sm font-medium">
@@ -325,7 +322,7 @@ export default function App() {
                   <p
                     id="conversion-error"
                     role={input.trim() ? "alert" : undefined}
-                    className="mt-3 max-w-sm break-words text-xs leading-6 text-[#8c9580]"
+                    className="mt-3 max-w-sm break-words text-xs leading-6 text-muted"
                   >
                     {result.error}
                   </p>
@@ -339,12 +336,12 @@ export default function App() {
                   ? `${result.data.definitions} definitions · ${result.data.properties} properties`
                   : "TypeScript"}
               </span>
-              <span className="font-mono text-[10px]">.ts</span>
+              <span className="font-mono text-[11px]">.ts</span>
             </div>
           </div>
         </section>
         <div className="mt-4 flex flex-wrap items-center justify-between gap-3">
-          <span role="status" className="text-xs text-[#728569]">
+          <span role="status" className="text-xs text-muted">
             {status ||
               "Edit your sample or settings. Your types update automatically."}
           </span>
@@ -377,12 +374,12 @@ export default function App() {
         {!!result.data?.warnings.length && (
           <aside
             aria-label="Inference notes"
-            className="mt-5 flex gap-3 rounded-xl border border-[#e3e7d9] bg-[#f1f4ea] p-4"
+            className="mt-5 flex gap-3 rounded-xl border border-note/25 bg-note-bg p-4"
           >
-            <Info size={17} className="mt-0.5 shrink-0 text-[#7b9169]" />
+            <Info size={17} className="mt-0.5 shrink-0 text-note" />
             <div>
               <h2 className="text-xs font-semibold">A few things to review</h2>
-              <ul className="mt-2 space-y-1 text-[11px] leading-5 text-[#829071]">
+              <ul className="mt-2 space-y-1 text-[11px] leading-5 text-muted">
                 {result.data.warnings.map((warning) => (
                   <li key={warning}>{warning}</li>
                 ))}
@@ -391,7 +388,7 @@ export default function App() {
           </aside>
         )}
         <section className="py-9">
-          <div className="flex items-center gap-2 text-[#75896a]">
+          <div className="flex items-center gap-2 text-muted">
             <Sparkles size={17} />
             <h2 className="text-sm font-medium">
               Less boilerplate. More possibilities.
@@ -414,7 +411,7 @@ export default function App() {
               description="Use the generated definitions in your app. Review them against your API’s actual contract."
             />
           </div>
-          <details className="mt-6 border-t border-[#e1e6dc] pt-4 text-xs text-[#7f8d73]">
+          <details className="mt-6 border-t border-line pt-4 text-xs text-muted">
             <summary className="flex cursor-pointer items-center gap-2">
               What can a JSON sample tell me?
               <ChevronDown size={13} />
@@ -432,7 +429,7 @@ export default function App() {
               href="https://www.typescriptlang.org/docs/handbook/2/objects.html"
               target="_blank"
               rel="noreferrer"
-              className="mt-2 inline-flex items-center gap-1.5 text-[#3b613a]"
+              className="mt-2 inline-flex items-center gap-1.5 text-accent"
             >
               TypeScript object types
               <ArrowRight size={12} />
@@ -440,8 +437,8 @@ export default function App() {
           </details>
         </section>
       </main>
-      <footer className="flex flex-wrap items-center justify-between gap-4 border-t border-[#e1e6dc] py-6 text-[10px] text-[#97a28c]">
-        <span className="flex items-center gap-1.5 text-xs font-semibold text-[#7d9070]">
+      <footer className="flex flex-wrap items-center justify-between gap-4 border-t border-line py-6 text-[11px] text-muted">
+        <span className="flex items-center gap-1.5 text-xs font-semibold text-muted">
           <Braces size={15} />
           smsm type forge.
         </span>
@@ -472,12 +469,12 @@ function Option({
   onChange: () => void;
 }) {
   return (
-    <label className="flex cursor-pointer items-center gap-2 text-xs text-[#748367]">
+    <label className="flex cursor-pointer items-center gap-2 text-xs text-muted">
       <input
         type="checkbox"
         checked={checked}
         onChange={onChange}
-        className="size-3.5 accent-[#537746]"
+        className="size-3.5 accent-primary"
       />
       {label}
     </label>
@@ -494,11 +491,11 @@ function Tip({
 }) {
   return (
     <article>
-      <span className="text-[9px] font-semibold tracking-[1.2px] text-[#99a58e]">
+      <span className="text-[11px] font-semibold tracking-[1.2px] text-muted">
         {number}
       </span>
       <h3 className="mt-2 text-xs font-medium">{title}</h3>
-      <p className="mt-2 max-w-xs text-[11px] leading-6 text-[#89957d]">
+      <p className="mt-2 max-w-xs text-[11px] leading-6 text-muted">
         {description}
       </p>
     </article>
@@ -514,13 +511,13 @@ function highlight(line: string) {
         key={index}
         className={
           part.startsWith('"')
-            ? "text-[#947047]"
+            ? "text-code-string"
             : /^(export|interface|type|readonly)$/.test(part)
-              ? "text-[#8c649c]"
+              ? "text-code-keyword"
               : /^(string|number|boolean|null|unknown|ReadonlyArray)$/.test(
                     part,
                   )
-                ? "text-[#5d8969]"
+                ? "text-code-type"
                 : ""
         }
       >

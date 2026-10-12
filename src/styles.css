@@ -1,11 +1,12 @@
 @import "tailwindcss";
+@import "./theme.css";
 @theme {
   --font-sans: "Inter", "Segoe UI", Arial, sans-serif;
   --font-mono: Consolas, "Courier New", monospace;
 }
 @layer base {
   body {
-    @apply m-0 bg-[#f7f8f5] font-sans text-[#293a2c] antialiased;
+    @apply m-0 bg-canvas font-sans text-ink antialiased;
   }
   button,
   a,
@@ -28,7 +29,7 @@
   summary,
   [tabindex] {
     &:focus-visible {
-      @apply outline-2 outline-offset-4 outline-[#8dad7c];
+      @apply outline-2 outline-offset-4 outline-accent;
     }
   }
   textarea:focus-visible,
@@ -46,37 +47,70 @@
 }
 @layer components {
   .field-label {
-    @apply mb-2 block text-[10px] font-semibold text-[#758268];
+    @apply mb-2 block text-[10px] font-semibold text-muted;
   }
   .field-input {
-    @apply w-full rounded-lg border border-[#dce4d4] bg-[#fbfcf9] px-3 py-2.5 font-mono text-xs text-[#4b6540];
+    @apply w-full rounded-lg border border-line bg-recessed px-3 py-2.5 font-mono text-xs text-ink;
   }
   .editor-heading {
-    @apply flex h-[65px] items-center justify-between gap-3 border-b border-[#edf0e8] px-5;
+    @apply flex h-[65px] items-center justify-between gap-3 border-b border-line px-5;
   }
   .step {
-    @apply grid size-6 place-items-center rounded-md border border-[#dfe5d8] text-[9px] text-[#94a087];
+    @apply grid size-6 place-items-center rounded-md border border-line text-[9px] text-muted;
   }
   .json-editor {
-    @apply block h-[410px] w-full resize-none overflow-auto border-0 bg-transparent px-5 py-5 font-mono text-xs leading-6 text-[#50614a] outline-none placeholder:text-[#a3ad97] sm:h-[445px];
+    @apply block h-[410px] w-full resize-none overflow-auto border-0 bg-transparent px-5 py-5 font-mono text-[13px] leading-6 text-ink outline-none placeholder:text-muted sm:h-[445px];
     tab-size: 2;
   }
   .output-editor {
-    @apply h-[410px] overflow-auto py-5 font-mono text-xs leading-6 text-[#50614a] sm:h-[445px];
+    @apply h-[410px] overflow-auto py-5 font-mono text-xs leading-6 text-ink sm:h-[445px];
   }
   .code-line {
     @apply flex min-w-max pr-5;
   }
   .line-number {
-    @apply mr-4 inline-block w-9 shrink-0 select-none text-right text-[#bbc5ad];
+    @apply mr-4 inline-block w-9 shrink-0 select-none text-right text-faint;
   }
   .editor-footer {
-    @apply flex h-11 items-center justify-between gap-2 border-t border-[#e8eddf] px-5 text-[9px] text-[#94a184];
+    @apply flex h-11 items-center justify-between gap-2 border-t border-line px-5 text-[9px] text-muted;
   }
   .action-primary {
-    @apply flex items-center gap-2 rounded-lg border border-[#2e5139] bg-[#2e5139] px-4 py-3 text-[11px] font-medium text-white hover:bg-[#24452f];
+    @apply flex items-center gap-2 rounded-lg border border-line bg-primary px-4 py-3 text-[11px] font-medium text-on-primary hover:bg-primary-hover;
   }
   .action-secondary {
-    @apply flex items-center gap-2 rounded-lg border border-[#dde5d4] bg-white px-4 py-3 text-[11px] text-[#657f56];
+    @apply flex items-center gap-2 rounded-lg border border-line bg-surface px-4 py-3 text-[11px] text-muted;
+  }
+}
+
+@layer components {
+  .technical-emblem {
+    @apply absolute top-20 right-10 hidden size-36 items-center justify-center rounded-xl border border-line bg-surface text-accent lg:flex;
+    background-image:
+      linear-gradient(var(--color-line), var(--color-line)),
+      linear-gradient(var(--color-line), var(--color-line));
+    background-size:
+      18px 1px,
+      1px 18px;
+    background-position: 14px 14px;
+    background-repeat: no-repeat;
+  }
+  .technical-emblem > svg {
+    transform: translateY(-10px);
+  }
+  .technical-emblem > span {
+    @apply absolute bottom-4 font-mono text-[10px] tracking-[2px] text-faint;
+  }
+  .output-editor,
+  .json-editor {
+    caret-color: var(--color-accent);
+  }
+  .action-primary {
+    border-color: var(--color-primary);
+  }
+  .action-primary:hover {
+    border-color: var(--color-accent);
+  }
+  .field-input {
+    box-shadow: inset 0 1px 4px #00000020;
   }
 }
