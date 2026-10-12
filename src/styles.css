@@ -1,0 +1,82 @@
+@import "tailwindcss";
+@theme {
+  --font-sans: "Inter", "Segoe UI", Arial, sans-serif;
+  --font-mono: Consolas, "Courier New", monospace;
+}
+@layer base {
+  body {
+    @apply m-0 bg-[#f7f8f5] font-sans text-[#293a2c] antialiased;
+  }
+  button,
+  a,
+  input,
+  textarea,
+  summary {
+    -webkit-tap-highlight-color: transparent;
+  }
+  button,
+  summary {
+    @apply cursor-pointer;
+  }
+  button:disabled {
+    @apply cursor-not-allowed opacity-40;
+  }
+  button,
+  a,
+  input,
+  textarea,
+  summary,
+  [tabindex] {
+    &:focus-visible {
+      @apply outline-2 outline-offset-4 outline-[#8dad7c];
+    }
+  }
+  textarea:focus-visible,
+  input:focus-visible {
+    @apply outline-offset-0;
+  }
+  button:not(:disabled),
+  a {
+    @apply transition-colors;
+  }
+  button:not(:disabled):hover,
+  a:hover {
+    @apply brightness-95;
+  }
+}
+@layer components {
+  .field-label {
+    @apply mb-2 block text-[10px] font-semibold text-[#758268];
+  }
+  .field-input {
+    @apply w-full rounded-lg border border-[#dce4d4] bg-[#fbfcf9] px-3 py-2.5 font-mono text-xs text-[#4b6540];
+  }
+  .editor-heading {
+    @apply flex h-[65px] items-center justify-between gap-3 border-b border-[#edf0e8] px-5;
+  }
+  .step {
+    @apply grid size-6 place-items-center rounded-md border border-[#dfe5d8] text-[9px] text-[#94a087];
+  }
+  .json-editor {
+    @apply block h-[410px] w-full resize-none overflow-auto border-0 bg-transparent px-5 py-5 font-mono text-xs leading-6 text-[#50614a] outline-none placeholder:text-[#a3ad97] sm:h-[445px];
+    tab-size: 2;
+  }
+  .output-editor {
+    @apply h-[410px] overflow-auto py-5 font-mono text-xs leading-6 text-[#50614a] sm:h-[445px];
+  }
+  .code-line {
+    @apply flex min-w-max pr-5;
+  }
+  .line-number {
+    @apply mr-4 inline-block w-9 shrink-0 select-none text-right text-[#bbc5ad];
+  }
+  .editor-footer {
+    @apply flex h-11 items-center justify-between gap-2 border-t border-[#e8eddf] px-5 text-[9px] text-[#94a184];
+  }
+  .action-primary {
+    @apply flex items-center gap-2 rounded-lg border border-[#2e5139] bg-[#2e5139] px-4 py-3 text-[11px] font-medium text-white hover:bg-[#24452f];
+  }
+  .action-secondary {
+    @apply flex items-center gap-2 rounded-lg border border-[#dde5d4] bg-white px-4 py-3 text-[11px] text-[#657f56];
+  }
+}
